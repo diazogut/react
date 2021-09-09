@@ -1,26 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useState, useRef } from 'react';
-import { StyleSheet, Text, View, Animated, Button } from 'react-native';
-import { HelloText } from './src/HelloText';
-import {Navbar} from './src/Navbar'
-import { Todo } from './src/Todo';
+import React from 'react';
+import { StyleSheet, View, Button } from 'react-native';
+import { HelloText } from './src/components/HelloText';
+import { JsonArticles } from './src/components/jsonarticles';
 
-
-
-export default function App() {
-
-  
+export default function App() 
+{
   return (
-    
-  <View style={styles.container}> 
-    <HelloText />
-  </View>
-     
-     
+    <View style={styles.container}> 
+      <HelloText />
+      <JsonArticles style={styles.jsonstyle} />
+    </View>  
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create(
+{
   container: {
     flex: 1,
     backgroundColor: '#1a1818',
@@ -30,5 +24,5 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     textAlign: 'center',
-  },
+  },   
 });
