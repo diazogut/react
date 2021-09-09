@@ -5,8 +5,8 @@ export function TimeNow() {
         var date = new Date();
         var current_hour = date.getHours();
       
-        let night = ['00','01','02','03','04','05']
-        let morning = ['06','07','08','09','10']
+        let night = ['0','1','2','3','4','5']
+        let morning = ['6','7','8','9','10']
         let day = ['11','12','13','14','15','16','17']
         let evening = ['18','19','20','21','22','23']
       
