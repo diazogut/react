@@ -1,14 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState, useRef } from 'react';
-import { StyleSheet, Text, View, Animated, Button } from 'react-native';
-import { HelloText } from './src/HelloText';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { AddTodo } from './src/AddTodo';
 import {Navbar} from './src/Navbar'
 import { Todo } from './src/Todo';
 
-
-
 export default function App() {
+  const [todos, setTodos] = useState ([])
 
+  const addTodo = (title) => {
+    setTodos(prev => [...prev, {
+      id: Date.now().toString(),
+      title
+    }])
+  }
+
+  const removeTodo = id => {
+    setTodos(prev => prev.filter(todo => todo.id !== id))
+  }
+
+<<<<<<< HEAD
   // const fadeAnim = useRef(new Animated.Value(0)).current;
 
   // const fadeIn = () => {
@@ -89,18 +100,34 @@ export default function App() {
   </View>
      
      
+=======
+  return (
+    <View>    
+      <Navbar title='Todo App!' />
+        <View style={styles.container}>
+           <AddTodo onSubmit={addTodo}/>            
+           <FlatList 
+            keyExtractor={item => item.id.toString()}
+            data={todos}
+             renderItem={({item}) => (
+              <Todo todo={item} onRemove={removeTodo} />
+             )}
+            />
+           
+           {/* <View> 
+             { todos.map(todo => {
+               return <Todo todo={todo} key={todo.id} />
+             }) }
+           </View> */}
+        </View>
+    </View>
+>>>>>>> parent of 75450ba (Hello Text + Time)
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#1a1818',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'white',
-    textAlign: 'center',
-  },
+    paddingHorizontal: 30,
+    paddingVertical: 20
+  }
 });
