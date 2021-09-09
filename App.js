@@ -1,15 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import { HelloText } from './src/components/HelloText';
-import { JsonArticles } from './src/components/jsonarticles';
+import { JsonArticles } from './src/components/jsonarticles'; 
 
 export default function App() 
 {
   return (
     <View style={styles.container}> 
-      <HelloText />
-      <JsonArticles style={styles.jsonstyle} />
-    </View>  
+      <View > 
+        <HelloText />
+        <JsonArticles/>
+        <Button title="Обновить" onPress={JsonArticles()}></Button>
+      </View>  
+    </View>
   );
 }
 

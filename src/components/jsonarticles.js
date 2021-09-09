@@ -1,5 +1,5 @@
 import React, {useEffect, useState,useRef } from 'react';
-import { View, Text, Animated } from 'react-native';
+import { View, Text, Animated, Button } from 'react-native';
 
 export function JsonArticles() 
 {  
@@ -64,14 +64,14 @@ export function JsonArticles()
 
     return (    
         
-
-
-        <View style={{ flex: 1, padding: 24 }}>    
+       <View style={{ flex: 1, padding: 24 }}>    
         <Animated.View style={[ { opacity: fadeAnim } ]}>                  
-            <Text style={{ color: 'white' }}>{data}</Text>
+            <Text style={{ color: 'white' }}>{data}</Text>            
             {fadeIn()}   
         </Animated.View>
         {fadeOut()}
+        
         </View>      
     )          
 }
+
