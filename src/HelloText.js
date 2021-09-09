@@ -27,8 +27,37 @@ const fadeOut = () => {
 
 
   return (
+    // <View>    
+    //   <Navbar title='Привет' />
+    //     <View style={styles.container}>
+    //        <AddTodo onSubmit={addTodo}/>            
+    //        <FlatList 
+    //         keyExtractor={item => item.id.toString()}
+    //         data={todos}
+    //          renderItem={({item}) => (
+    //           <Todo todo={item} onRemove={removeTodo} />
+    //          )}
+    //         />
+           
+    //        {/* <View> 
+    //          { todos.map(todo => {
+    //            return <Todo todo={todo} key={todo.id} />
+    //          }) }
+    //        </View> */}
+    //     </View>
+    // </View>
     
-    <View style={styles.container}>      
+    // <View style={styles.container}>
+    //   {/* <StatusBar style="auto" /> */}
+    //   <Text style={styles.text}>Open up App.js to start working on your app!</Text>      
+    // </View>
+    // <View style={{flex:1}}>
+    // <Animated.Text style={{color: "#9b9b9b"}}>
+    // <Text style={styles.text}>Open up App.js to start working on your app!</Text>      
+    // </Animated.Text>
+    // </View>
+    <View style={styles.container}>  
+    {/* {timenow()} */}
     <Animated.View style={[ { opacity: fadeAnim } ]}>
       <Text style={styles.text}>
         <TimeNow/>
@@ -36,6 +65,7 @@ const fadeOut = () => {
       {fadeIn()} 
       </Animated.View>   
       {fadeOut()}
+      {/* {timenow()} */}
      </View>
          
   );
