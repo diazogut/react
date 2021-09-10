@@ -1,31 +1,25 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-import { HelloText } from './src/components/HelloText';
+import { View, Text } from 'react-native';
 import { JsonArticles } from './src/components/jsonarticles'; 
+import { styles } from './src/components/styles';
+import { TimeNow } from './src/components/TimeNow';
+
 
 export default function App() 
 {
   return (
+    //контейнер фона
     <View style={styles.container}> 
-      <View > 
-        <HelloText />
-        <JsonArticles/>
-        <Button title="Обновить" onPress={JsonArticles()}></Button>
+      
+      <View style={styles.container}> 
+        {/* возврат приветствия */}
+        <Text style={styles.fadtext}>
+          <TimeNow/>
+        </Text>  
       </View>  
+      
+      {/* возврат факта из бд*/}
+      <JsonArticles/>
     </View>
   );
 }
-
-const styles = StyleSheet.create(
-{
-  container: {
-    flex: 1,
-    backgroundColor: '#1a1818',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'white',
-    textAlign: 'center',
-  },   
-});

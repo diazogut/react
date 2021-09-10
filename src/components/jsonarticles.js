@@ -1,8 +1,10 @@
 import React, {useEffect, useState,useRef } from 'react';
-import { View, Text, Animated, Button } from 'react-native';
+import { View, Text, Animated, Button, StyleSheet,TouchableWithoutFeedback,Image } from 'react-native';
+import { styles } from './styles';
 
-export function JsonArticles() 
-{  
+//Обращается к базе и возвращает рандомный текст из таблицы
+export const JsonArticles = () => 
+{      
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const fadeIn = () => 
     {
@@ -15,38 +17,40 @@ export function JsonArticles()
         }).start();
     };
 
-    const fadeOut = () => 
-    {
-        setTimeout(() => 
-        {
-        // анимация скрытия
-        Animated.timing(fadeAnim, 
-            {
-            toValue: 0,
-            duration: 1000,
-            useNativeDriver: true,
-            }).start();
-        },10000)
-    };
-    const [isLoading, setLoading] = useState(true);
+    // анимация скрытия элемента отключена
+    // const fadeOut = () => 
+    // {
+    //     setTimeout(() => 
+    //     {
+    //     // анимация скрытия
+    //     Animated.timing(fadeAnim, 
+    //         {
+    //         toValue: 0,
+    //         duration: 1000,
+    //         useNativeDriver: true,
+    //         }).start();
+    //     },10000)
+    // };
+
     const [data, setData] = useState([]);
+
+    //принимает значение массива и выбирает из него рандомный элемент
     function arrayRandElement(arr) 
     {
         var rand = Math.floor(Math.random() * arr.length);
         return arr[rand];
     }
 
+    //в асинхронном режиме подключаемся к API, забираем json, отдаем в функцию выбора рандома, возвращаем поле body
     const fetchAndLog = async () => 
     {
         try 
         {
-            const response = await fetch('http://192.168.0.162:3000/articles.json');            
+            const response = await fetch('http://192.168.0.139:3000/articles.json');            
             const json = await response.json();
-            console.log('бугага');//
             const random = (arrayRandElement(json));
             const body = random.body
             setData(body);
-            console.log(body)
             return body;
         }
         catch (error)
@@ -57,21 +61,26 @@ export function JsonArticles()
         }   
     }
 
+    //обработка нажатия, выполнить функцию подключения к бд
+    const onPress = () => 
+    {
+        fetchAndLog()
+    }
+
     useEffect(() => 
     {
         fetchAndLog();
     }, []);
 
-    return (    
-        
-       <View style={{ flex: 1, padding: 24 }}>    
-        <Animated.View style={[ { opacity: fadeAnim } ]}>                  
-            <Text style={{ color: 'white' }}>{data}</Text>            
-            {fadeIn()}   
-        </Animated.View>
-        {fadeOut()}
-        
+    return (            
+       <View style={styles.containerh} >    
+       <TouchableWithoutFeedback onPress={onPress}>
+            <Animated.View style={[ { opacity: fadeAnim } ]}>                  
+                <Text style={styles.ttimenow}>{data}</Text>            
+                {fadeIn()}   
+            </Animated.View>
+            </TouchableWithoutFeedback>             
         </View>      
     )          
+    
 }
-

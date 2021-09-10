@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { Text, View} from 'react-native';
+import { styles } from './styles'; 
 
+//функция приветствия в зависимости от времени суток
 export function TimeNow() 
 { 
   var date = new Date();
@@ -15,6 +17,7 @@ export function TimeNow()
   let justnow = false
   let i = 0
 
+  //выполняй цикл, пока не найдет значение времени в массивах, описанных временами суток
   while (justnow === false) 
   {
     let justnow = timesofday[i].includes(current_hour.toString())
@@ -40,22 +43,14 @@ export function TimeNow()
       break
     }
     i++
+    if (i>4) {
+      break
+    }
   }        
   return (
     <View>
-      <Text style={styles.text}>{texth}</Text>     
+      <Text style={styles.ttimenow}>{texth}</Text>     
     </View>
   )
         
  }
-
- const styles = StyleSheet.create(
-   {
-    text: 
-    {
-      color: 'white',
-      textAlign: 'center',
-      fontSize: 20
-    },
-  });
-  
