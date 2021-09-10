@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "react-native-demo",
-    "slug": "react-native-demo",
+    "name": "RN Hello",
+    "slug": "react-native-hello",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/myico.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
