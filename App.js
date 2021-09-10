@@ -1,34 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useState, useRef } from 'react';
-import { StyleSheet, Text, View, Animated, Button } from 'react-native';
-import { HelloText } from './src/HelloText';
-import {Navbar} from './src/Navbar'
-import { Todo } from './src/Todo';
+import React from 'react';
+import { View, Text } from 'react-native';
+import { JsonArticles } from './src/components/jsonarticles'; 
+import { styles } from './src/components/styles';
+import { TimeNow } from './src/components/TimeNow';
 
 
-
-export default function App() {
-
-  
+export default function App() 
+{
   return (
-    
-  <View style={styles.container}> 
-    <HelloText />
-  </View>
-     
-     
+    //контейнер фона
+    <View style={styles.container}> 
+      
+      <View style={styles.container}> 
+        {/* возврат приветствия */}
+        <Text style={styles.fadtext}>
+          <TimeNow/>
+        </Text>  
+      </View>  
+      
+      {/* возврат факта из бд*/}
+      <JsonArticles/>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1a1818',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'white',
-    textAlign: 'center',
-  },
-});
